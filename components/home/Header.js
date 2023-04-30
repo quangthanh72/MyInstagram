@@ -12,11 +12,12 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   logo:{
-    width: 100,
+    width: 150,
     height: 50,
-    resizeMode: 'contain',
-    top: 40,
+    resizeMode: 'contain', 
+    top:40,
   },
 })
 
 export default Header
+SafeAreaView
