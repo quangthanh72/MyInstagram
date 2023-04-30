@@ -5,7 +5,8 @@ import Header from '../components/home/Header'
 const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Header/> 
+      <Header/>
+       
     </SafeAreaView>
   )
 }
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor:  'white',
         flex: 1,  
-    }
+    },
 })
 
 export default HomeScreen
