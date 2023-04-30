@@ -1,11 +1,14 @@
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
-import React from 'react'
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import { View, Text, SafeAreaView, StyleSheet,StatusBar } from 'react-native'
+import React from 'react' 
 import Header from '../components/home/Header'
+
+
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Header/>
+    <SafeAreaView style={{flex:1, marginTop: StatusBar.currentHeight}}>
+      <Header></Header>
        
     </SafeAreaView>
   )
@@ -19,4 +22,4 @@ const styles = StyleSheet.create({
 })
 
 export default HomeScreen
-SafeAreaView
+// SafeAreaView

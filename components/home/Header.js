@@ -1,5 +1,6 @@
-import { View, Text , Image, StyleSheet, SafeAreaView, TouchableOpacity} from 'react-native'
-import React from 'react'
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import { View, Text , Image, StyleSheet, SafeAreaView, TouchableOpacity, StatusBar} from 'react-native'
+import React from 'react' 
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 
@@ -50,14 +51,14 @@ const styles = StyleSheet.create({
     width: 150,
     height: 50,
     resizeMode: 'contain', 
-    top: 40,
+    //top: 40,
   },
   icon:{
     width:25,
     height:25,
     marginLeft: 10,
     resizeMode:'contain',
-    top: 40,
+    //top: 40,
     paddingHorizontal: 10
   },
 })
