@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, StyleSheet,StatusBar } from 'react-native'
 import React from 'react' 
 import Header from '../components/home/Header'
 import Stories from '../components/home/Stories';
-
+import Post from '../components/home/Post';
 
 
 const HomeScreen = () => {
@@ -11,6 +11,7 @@ const HomeScreen = () => {
     <SafeAreaView style={{flex:1, marginTop: StatusBar.currentHeight}}>
       <Header/>
       <Stories/>
+      <Post/>
     </SafeAreaView>
   )
 }
