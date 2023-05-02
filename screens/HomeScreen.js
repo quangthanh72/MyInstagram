@@ -13,8 +13,10 @@ const HomeScreen = () => {
       <Header/>
       <Stories/>
       <ScrollView>
-        {POSTS}
-        <Post/>
+        {POSTS.map((post,index) => (
+        <Post post={post} key={index} />
+        ))}
+        
       </ScrollView>
     </SafeAreaView>
   )

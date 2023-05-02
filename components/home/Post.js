@@ -5,6 +5,7 @@ const Post = ({post}) => {
   return (
     <View style={{ marginBottom: 30}}>
       <Divider width={1} orientation='vertical'  />
+      
       <PostHeader post={post} />
     </View>
   )
