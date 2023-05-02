@@ -8,7 +8,7 @@ export const USERS = [
         image: 'https://i.pinimg.com/originals/fa/e4/df/fae4dfd8358ed86dc98a21e1668724d4.jpg'
     },
     {
-        user: 'dưa hấu',
+        user: 'dưa hấu siêu bự',
         image: 'https://i.pinimg.com/originals/fa/e4/df/fae4dfd8358ed86dc98a21e1668724d4.jpg'
     },
     {
