@@ -1,4 +1,4 @@
-export const USERS = [
+export const USERS= [
     {
         user: 'bơ',
         image:'https://i.pinimg.com/originals/01/17/20/011720703d78d60fccf9f79821e14159.jpg'
