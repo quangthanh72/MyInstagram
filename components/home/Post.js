@@ -22,9 +22,9 @@ const PostHeader =({post}) =>{
   >
       <View>
         <Image source={{ uri: post.profile_picture }} style={styles.story} />
-        <Text></Text>
+        <Text>adad</Text>
       </View>
-  </View>
+   </View>
 }
 const styles = StyleSheet.create({
   story:{
