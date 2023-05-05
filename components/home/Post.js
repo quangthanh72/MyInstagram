@@ -1,6 +1,7 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import { Divider } from 'react-native-elements'
+
 const Post = ({post}) => {
   return (
     <View style={{ marginBottom: 30}}>
@@ -12,6 +13,7 @@ const Post = ({post}) => {
 }
 
 const PostHeader =({post}) =>{
+return(
   <View 
     style={{
       flexDirection: 'row',
@@ -22,10 +24,12 @@ const PostHeader =({post}) =>{
   >
       <View>
         <Image source={{ uri: post.profile_picture }} style={styles.story} />
-        <Text>adad</Text>
+        <Text style={{color: 'white', marginLeft:5, fontWeight:'900'}}>
+          {post.user}
+        </Text>
       </View>
    </View>
-}
+)}
 const styles = StyleSheet.create({
   story:{
     width:35,
