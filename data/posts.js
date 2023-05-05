@@ -2,10 +2,10 @@ import { USERS } from "./Users";
 
 export const POSTS=[
 {
-    imageUrl: 'https://ss-ava.saostar.vn/w800/pc/1615604842998/harry-potter-chinh-thuc-tai-ngo-khan-gia-viet-tren-man-anh-rong-sau-10-nam-e39-5628267(1).jpg',
+    imageUrl: 'https://wizarddojo.files.wordpress.com/2015/06/23.jpg',
     user: USERS[0].user,
     likes: 7870,
-    caption: 'Harry Potter',
+    caption: 'How\' moving castle',
     profile_picture: USERS[0].image,
     comments:[
         {
@@ -20,7 +20,7 @@ export const POSTS=[
     
 },
 {
-    imageUrl: 'https://i.pinimg.com/564x/24/44/c9/2444c9b509143065e9df99ad0ae9685d.jpg',
+    imageUrl: 'https://pic-bstarstatic.akamaized.net/ugc/3c8c48f2dadff8351ae4d73150cec086f5d1bb41.jpg',
     user: USERS[1].user,
     likes: 7870,
     caption: 'Harry Potter bủh',
