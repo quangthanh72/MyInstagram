@@ -11,7 +11,8 @@ const Post = ({ post }) => {
         <PostFooter />
         <Likes post={post} />
         <Caption post={post} />
-        <CommentSection post={post}/>
+        <CommentSection post={post} />
+        <Comments post={post} />
       </View>
     </View>
   );
@@ -88,32 +89,43 @@ const Icon = ({ imgStyle, imgUrl }) => (
 );
 
 const Likes = ({ post }) => (
-  <View style={{flexDirection:'row', marginTop:4}}>
+  <View style={{ flexDirection: "row", marginTop: 4 }}>
     <Text style={{ fontWeight: "600" }}>
       {" "}
       {post.likes.toLocaleString("en")} likes{" "}
     </Text>
   </View>
 );
-const Caption = ({post}) => (
-  <View style={{  marginTop: 5}}> 
+const Caption = ({ post }) => (
+  <View style={{ marginTop: 5 }}>
     <Text>
-    <Text style={{fontWeight: '600'}}>
-        {post.user} 
-    </Text>
-    <Text> {post.caption}</Text>
+      <Text style={{ fontWeight: "600" }}>{post.user}</Text>
+      <Text> {post.caption}</Text>
     </Text>
   </View>
 );
-const CommentSection = ({post}) => (
-  <Text style={{ color: 'grey'}}>
-    View{post.comments.length > 1 ? ' all ' : ' '} {post.comments.length}{" "}
-    {post.comments.length > 1 ? 'comments' : 'comment'}
-  </Text>
-)
-
-
-
+const CommentSection = ({ post }) => (
+  <View style={{ marginTop: 5 }}>
+    {!!post.comments.length && (
+      <Text style={{ color: "grey" }}>
+        View{post.comments.length > 1 ? " all " : " "} {post.comments.length}{" "}
+        {post.comments.length > 1 ? "comments" : "comment"}
+      </Text>
+    )}
+  </View>
+);
+const Comments = ({ post }) => (
+  <>
+    {post.comments.map((comment, index) => (
+      <View key={index} style={{flexDirection: 'row', marginTop:5}}>
+        <Text>
+          <Text style={{ fontWeight: "600" }}>{comment.user}</Text>
+          {" "}{comment.comment}
+        </Text>
+      </View>
+    ))}
+  </>
+);
 
 const styles = StyleSheet.create({
   story: {
