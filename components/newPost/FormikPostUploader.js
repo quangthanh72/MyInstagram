@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import { useState } from "react";
 import { Button, Divider } from "react-native-elements";
+import validUrl from 'valid-url'
 
 const PLACEHOLDER_IMG =
   "https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg";
@@ -13,13 +14,17 @@ const uploadPostSchema = Yup.object().shape({
   caption: Yup.string().max(2200, "Caption has reached the character limit"),
 });
 
-const formikPostUploader = () => {
+const formikPostUploader = ({navigation}) => {
   const [thumbnailUrl, setThumbnailUrl] = useState(PLACEHOLDER_IMG);
 
   return (
     <Formik
-      initialValues={{ caption: "",imageUrl: "" }}
-      onSubmit={(values) => console.log(values)}
+      initialValues={{ caption: "", imageUrl: "" }}
+      onSubmit={(values) => {
+        console.log(values);
+        console.log("succesful");
+        navigation.goBack();
+      }}
       validationSchema={uploadPostSchema}
       validateOnMount={true}
     >
@@ -32,35 +37,45 @@ const formikPostUploader = () => {
         isValid,
       }) => (
         <>
-          <View style={{margin:20, justifyContent:'space-between', flexDirection:'row'}}>
-            <Image source={{ uri: thumbnailUrl ? thumbnailUrl : PLACEHOLDER_IMG }} style={{width:100, height:100 }} />
-          <View style={{flex:1, marginLeft:15}}>
-            <TextInput 
-            style={{color:'black',fontSize:20}}
-            placeholder="Write a caption..." 
-            multiline={true}
-            onChangeText={handleChange('caption')}
-            onBlur={handleBlur('caption')} 
-            value={values.caption} />
+          <View
+            style={{
+              margin: 20,
+              justifyContent: "space-between",
+              flexDirection: "row",
+            }}
+          >
+            <Image
+              source={{ uri: validUrl.isUri(thumbnailUrl) ? thumbnailUrl : PLACEHOLDER_IMG }}
+              style={{ width: 100, height: 100 }}
+            />
+            <View style={{ flex: 1, marginLeft: 15 }}>
+              <TextInput
+                style={{ color: "black", fontSize: 20 }}
+                placeholder="Write a caption..."
+                multiline={true}
+                onChangeText={handleChange("caption")}
+                onBlur={handleBlur("caption")}
+                value={values.caption}
+              />
             </View>
           </View>
-        <Divider width={0.2} orientation="vertical"/>
-        <TextInput 
+          <Divider width={0.2} orientation="vertical" />
+          <TextInput
             onChange={(e) => setThumbnailUrl(e.nativeEvent.text)}
-            style={{color:'black'}}
+            style={{ color: "black" }}
             placeholder="Enter Image Url"
-            onChangeText={handleChange('imageUrl')}
-            onBlur={handleBlur('imageUrl')}
-            value={values.imageUrl} 
-            />
-            
-            {errors.imageUrl && (
-              <Text style={{fontSize:10,color:'red'}}>
-                {errors.imageUrl}
-              </Text>
-            )}
+            onChangeText={handleChange("imageUrl")}
+            onBlur={handleBlur("imageUrl")}
+            value={values.imageUrl}
+          />
 
-            <Button onPress={handleSubmit} title= "Share" disabled={!isValid} />
+          {errors.imageUrl && (
+            <Text style={{ fontSize: 10, color: "red" }}>
+              {errors.imageUrl}
+            </Text>
+          )}
+
+          <Button onPress={handleSubmit} title="Share" disabled={!isValid} />
         </>
       )}
     </Formik>

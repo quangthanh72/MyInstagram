@@ -11,14 +11,14 @@ import {
 import React from "react";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
-const Header = () => {
+const Header = ({navigation}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
         <Image style={styles.logo} source={require("../../assets/logo.png")} />
       </TouchableOpacity>
       <View style={styles.iconContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.push('NewPostScreen')} >
           <Image
             source={require("../../assets/iconAdd.png")}
             style={styles.icon}
