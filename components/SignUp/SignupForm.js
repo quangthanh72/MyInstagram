@@ -1,43 +1,35 @@
 import {
   View,
   Text,
+  Button,
   StyleSheet,
   Pressable,
   TouchableOpacity,
-  Alert
 } from "react-native";
 import React, { useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
-import firebase from "../../firebaseConfig";
+
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Validator from "email-validator";
 
-const LoginForm = ({navigation}) => {
-  const LoginFormSchema = Yup.object().shape({
+const SignupForm = ({navigation}) => {
+  const SignupFormSchema = Yup.object().shape({
     email: Yup.string().email().required("An email is required"),
+    username: Yup.string().required().min(2, "A username is required"),
     password: Yup.string()
       .required()
       .min(6, "Your password has to have at least 8 characters"),
   });
 
-  const onLogin = async (email, password) => {
-    try{
-      await firebase.auth().signInWithEmailAndPassword(email, password)
-      console.log(" firebase Login", email, password)
-    } catch ( error ){
-      Alert.alert(error.message)
-    }
-  }
-
   return (
     <View style={styles.wrapper}>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: "", username: "", password: "" }}
         onSubmit={(values) => {
-          onLogin(values.email, values.password);
+          console.log(values);
         }}
-        validationSchema={LoginFormSchema}
+        validationSchema={SignupFormSchema}
         validateOnMount={true}
       >
         {({ handleChange, handleBlur, handleSubmit, values, isValid }) => (
@@ -69,22 +61,29 @@ const LoginForm = ({navigation}) => {
             <View style={styles.inputField}>
               <TextInput
                 placeholderTextColor="#444"
+                placeholder="Username"
+                autoCapitalize="none"
+                textContentType="username"
+                style={{ fontSize: 18 }}
+                onChangeText={handleChange("username")}
+                onBlur={handleBlur("username")}
+                value={values.username}
+              />
+            </View>
+            <View style={styles.inputField}>
+              <TextInput
+                placeholderTextColor="#444"
                 placeholder="Password"
                 autoCorrect={false}
                 secureTextEntry={true}
                 textContentType="password"
-                style={{ fontSize: 18  }}
+                style={{ fontSize: 18 }}
                 onChangeText={handleChange("password")}
                 onBlur={handleBlur("password")}
                 value={values.password}
-
               />
             </View>
-            <View style={{ alignItems: "flex-end", marginBottom: 30 }}>
-              <TouchableOpacity>
-                <Text style={{ color: "#6BB0F5" }}>Forgot password?</Text>
-              </TouchableOpacity>
-            </View>
+            
             <Pressable
               titleSize={20}
               style={styles.button(isValid)}
@@ -95,9 +94,9 @@ const LoginForm = ({navigation}) => {
               </Text>
             </Pressable>
             <View style={styles.signUpContainer}>
-              <Text>Don't have an account?</Text>
-              <TouchableOpacity onPress={() => navigation.push('SignupScreen')}>
-                <Text style={{ color: "#6BB0F5" }}> Sign Up</Text>
+              <Text>Already have an account?</Text>
+              <TouchableOpacity onPress={() => navigation.push('LoginScreen')}>
+                <Text style={{ color: "#6BB0F5" }}> Log in</Text>
               </TouchableOpacity>
             </View>
           </>
@@ -122,11 +121,12 @@ const styles = StyleSheet.create({
     borderColor:'#ccc'
   },
   button: (isValid) => ({
-    backgroundColor: isValid ?  "#0096F6":"#9ACAF7",
+    backgroundColor: isValid ? "#0096F6" : "#9ACAF7",
     alignItems: "center",
     justifyContent: "center",
     minHeight: 42,
     borderRadius: 4,
+    marginTop:50
   }),
   signUpContainer: {
     flexDirection: "row",
@@ -136,4 +136,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginForm;
+export default SignupForm;

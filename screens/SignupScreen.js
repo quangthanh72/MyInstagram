@@ -1,6 +1,6 @@
-import { View, Text, Image, StyleSheet, StatusBar, TextInput } from "react-native";
+import { View, Text, Image, StyleSheet, StatusBar} from "react-native";
 import React from "react";
-import LoginForm from "../components/Login/LoginForm";
+import SignupForm from "../components/SignUp/SignupForm";
 
 const LoginScreen = ({navigation}) => {
   return (
@@ -14,7 +14,7 @@ const LoginScreen = ({navigation}) => {
           }}
         />
       </View>
-      <LoginForm navigation={navigation}/>
+          <SignupForm navigation={navigation}/>
     </View>
   );
 };
